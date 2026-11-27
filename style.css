@@ -1,0 +1,200 @@
+/* ==========================================================
+   광화문 야경 테마
+   - style.css 뒤에 불러와서 색·그림자·분위기만 덮어씁니다.
+   - 갤러리 2열 그리드 외에는 크기·배치를 건드리지 않습니다.
+   팔레트: 밤하늘 남색 + 등불 금색 + 단청 적색 + 석재 크림
+   ========================================================== */
+:root {
+  color-scheme: dark;            /* audio/video 컨트롤·스크롤바도 어둡게 */
+  --night-900: #0b1424;          /* 깊은 밤하늘 */
+  --night-800: #0e1828;          /* 페이지 바탕 */
+  --night-700: #15233b;          /* 카드·목록 */
+  --night-600: #1d3250;          /* 펼침·호버 */
+  --line:      #2a4066;          /* 경계선 */
+  --lantern:   #f2c46b;          /* 등불 금색 */
+  --cream:     #f6e7bd;          /* 제목 글자 (석재 크림) */
+  --text:      #dfe3ea;
+  --muted:     #a9b4c4;
+  --dancheong: #c0432f;          /* 단청 적색 */
+}
+
+/* ---------- 바탕 ---------- */
+html, body { background: var(--night-900); }
+.ui-page {
+  background-color: var(--night-800);
+  background-image: linear-gradient(180deg, var(--night-900), var(--night-800) 320px);
+  background-repeat: no-repeat;
+  color: var(--text);
+  text-shadow: none;             /* jQM 밝은 글자 그림자 제거 */
+}
+.ui-page .ui-btn,
+.ui-page .ui-body-inherit,
+.ui-page .ui-collapsible-content { text-shadow: none; }
+
+.lead, .intro-lead, .gallery-lead, .note, .media-caption { color: var(--muted); }
+
+/* ---------- 헤더 ---------- */
+.ui-header.ui-bar-inherit {
+  background: linear-gradient(180deg, #08101d, #14233b);
+  border-color: #08101d;
+  box-shadow: 0 1px 0 rgba(242, 196, 107, .38);   /* 얇은 금빛 선 */
+  color: var(--cream);
+}
+.ui-header .ui-title { color: var(--cream); }
+.ui-header .ui-btn {
+  background: rgba(242, 196, 107, .14);
+  color: var(--lantern);
+}
+
+/* ---------- 홈: 히어로 ---------- */
+.hero {
+  background: var(--night-900);
+  box-shadow: 0 0 0 1px rgba(242, 196, 107, .28), 0 12px 30px rgba(0, 0, 0, .55);
+}
+.hero-caption { background: linear-gradient(to top, rgba(5, 10, 20, .92), rgba(5, 10, 20, 0)); }
+.hero-caption h2 { color: #fff5d6; text-shadow: 0 0 14px rgba(242, 196, 107, .4); }
+.hero-caption p  { color: #cdd6e3; }
+
+/* ---------- 홈: 메뉴(listview) ---------- */
+.ui-page .ui-listview > li > a.ui-btn {
+  background: var(--night-700);
+  border: 1px solid var(--line);
+  box-shadow: inset 3px 0 0 var(--dancheong);     /* 단청 적색 포인트 */
+  color: var(--cream);
+}
+.ui-page .ui-listview > li > a.ui-btn:hover,
+.ui-page .ui-listview > li > a.ui-btn:active {
+  background: var(--night-600);
+  box-shadow: inset 3px 0 0 var(--lantern), 0 0 16px rgba(242, 196, 107, .18);
+  color: var(--lantern);
+}
+
+/* 진행 단계 카드 */
+.step-card { background: var(--night-700); border-color: var(--line); }
+.step-card p { color: var(--muted); }
+.step-badge { background: rgba(242, 196, 107, .16); color: var(--lantern); }
+
+/* ---------- 소개: 접이식 ---------- */
+.ui-page .ui-collapsible-heading-toggle {
+  background: var(--night-700);
+  border-color: var(--line);
+  color: var(--cream);
+}
+.ui-page .ui-collapsible-heading-toggle:hover { background: var(--night-600); }
+.ui-page .ui-collapsible:not(.ui-collapsible-collapsed) > .ui-collapsible-heading > .ui-collapsible-heading-toggle {
+  background: var(--night-600);
+  color: var(--lantern);
+}
+.ui-page .ui-collapsible-content {
+  background: #101c31;
+  border-color: var(--line);
+  color: var(--text);
+}
+.info-list b { color: var(--lantern); }
+
+/* ---------- 영상·음악 ---------- */
+.media-title { color: var(--cream); text-shadow: 0 0 14px rgba(242, 196, 107, .3); }
+.media-tag {
+  background: var(--night-700);
+  border-left-color: var(--dancheong);
+  color: var(--cream);
+}
+.video-wrap { background: #050a14; box-shadow: 0 0 0 1px var(--line); }
+.media-box audio, .media-box video { border-radius: 12px; }
+.ui-page .nav-btn.ui-btn {
+  background: linear-gradient(180deg, #c9503a, #9c3322);
+  color: #fff5d6;
+}
+.ui-page .nav-btn.ui-btn:hover,
+.ui-page .nav-btn.ui-btn:active { background: #d2593f; color: #fff; }
+
+/* 영상 dialog */
+.ui-dialog.ui-overlay-a { background: rgba(3, 8, 18, .85); }
+.ui-dialog-contain { background: var(--night-800); box-shadow: 0 0 40px rgba(0, 0, 0, .6); }
+
+/* ---------- 갤러리 ---------- */
+.gallery-item { background: var(--night-700); border-color: var(--line); }
+.gallery-item .cap { color: var(--cream); }
+.gallery-item:hover, .gallery-item:focus {
+  border-color: var(--lantern);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .55), 0 0 18px rgba(242, 196, 107, .3);  /* 등불이 번지는 느낌 */
+}
+.gallery-item:focus-visible { outline-color: var(--lantern); }
+
+/* 사진 팝업 */
+.ui-popup-screen.in { opacity: .82; }
+.photo-frame {
+  background: #101c31;
+  border: 1px solid var(--line);
+  box-shadow: 0 0 40px rgba(242, 196, 107, .18);
+}
+.photo-frame .photo-name { color: var(--lantern); }
+.ui-page .ui-popup .ui-btn.ui-btn-right {
+  background: var(--dancheong);
+  border: 1px solid var(--lantern);
+}
+
+/* ---------- 푸터: 불 밝힌 광화문 ---------- */
+.ui-footer.ui-bar-inherit.night-footer {
+  padding: 0;
+  background: #070e1b;
+  border: 0;
+  border-top: 1px solid rgba(242, 196, 107, .38);
+  color: #d7dde8;
+  text-align: center;
+  text-shadow: none;
+  overflow: hidden;
+}
+.night-footer img {
+  display: block;
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  object-position: center bottom;
+}
+.night-footer .footer-title {
+  margin: 0;
+  padding: 12px 16px 2px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--lantern);
+}
+.night-footer .footer-sub {
+  margin: 0;
+  padding: 0 16px 14px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #9fb0c6;
+}
+
+/* ---------- 갤러리: 모바일 웹앱 크기 2열 그리드 ---------- */
+.ui-page .gallery-grid {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 480px;                                   /* 휴대폰 화면 폭 */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));   /* 항상 2열, 칸 너비는 화면에 맞춰 늘고 줄어듦 */
+  gap: 10px;
+}
+.ui-page .gallery-item { min-width: 0; margin: 0; }
+.ui-page .gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;                                /* 원본 크기가 달라도 칸 비율 통일 */
+  object-fit: cover;
+}
+.ui-page .gallery-item .cap {
+  display: block;
+  padding: 10px 10px 11px;
+  white-space: nowrap;                                /* 긴 이름은 한 줄로 줄임표 처리 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 360px) {
+  .ui-page .gallery-grid { gap: 8px; }
+  .ui-page .gallery-item .cap { padding: 8px; font-size: 11px; }
+}
